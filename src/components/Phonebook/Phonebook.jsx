@@ -5,12 +5,28 @@ import FormAddContact from 'components/FormAddContact/FormAddContact';
 import ContactsList from 'components/ContactsList/ContactsList';
 import { nanoid } from 'nanoid';
 
-
 export default class Phonebook extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
+ 
 
   addContactInState = contact => {
     if (this.isDuplicate(contact)) {
@@ -102,4 +118,3 @@ export default class Phonebook extends Component {
     );
   }
 }
-
