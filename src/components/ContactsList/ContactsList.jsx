@@ -4,7 +4,8 @@ export default function ContactsList({ items, removeContact }) {
   const elements = items.map(({ name, number, id }) => {
     return (
       <li className="contacts__item" key={id}>
-        {name}: {number}{' '}
+        <a href="tel:{number}">{name}: {number}{' '}</a>
+        
         <button
           className="contacts__item-del"
           onClick={() => removeContact(id)}

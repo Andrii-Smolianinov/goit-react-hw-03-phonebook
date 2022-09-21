@@ -9,6 +9,11 @@ export const StylesPhonebook = styled.div`
   font-size: 16px;
   color: #3b5998;
 
+  a {
+    text-decoration: none; 
+    color: #3b5998;
+  }
+
   .contacts {
     border: 1px solid black;
     display: inline-flex;
@@ -59,6 +64,9 @@ export const StylesPhonebook = styled.div`
     :hover {
       background-color: #3b5998;
       color: #ffffff;
+      a {
+        color: #ffffff;
+      }
     }
   }
 
